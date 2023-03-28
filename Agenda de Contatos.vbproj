@@ -92,13 +92,20 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="contato-novo.aspx" />
     <Content Include="header.aspx" />
     <Content Include="index.aspx" />
     <Content Include="listar-contato.aspx" />
-    <Content Include="novo-contato.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="contato-novo.aspx.designer.vb">
+      <DependentUpon>contato-novo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="contato-novo.aspx.vb">
+      <DependentUpon>contato-novo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="header.aspx.designer.vb">
       <DependentUpon>header.aspx</DependentUpon>
     </Compile>
@@ -137,13 +144,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="novo-contato.aspx.designer.vb">
-      <DependentUpon>novo-contato.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="novo-contato.aspx.vb">
-      <DependentUpon>novo-contato.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
