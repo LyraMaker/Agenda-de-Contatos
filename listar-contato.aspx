@@ -10,14 +10,38 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="dsListarContatos" CssClass="container is-bordered mt-2 table is-striped is-hoverable is-fullwidth">
+        <asp:GridView ID="GridView1" runat="server" DataKeyNames="Id" DataSourceID="dsListarContatos" CssClass="container is-bordered mt-2 table is-striped is-hoverable is-fullwidth" AutoGenerateColumns="False">
             <Columns>
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" HeaderText="Opera&#231;&#245;es">
+                    <ControlStyle CssClass="button is-warning"></ControlStyle>
+
+                    <HeaderStyle HorizontalAlign="Center" CssClass="has-background-warning"></HeaderStyle>
+
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                </asp:CommandField>
                 <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" InsertVisible="False" SortExpression="Id"></asp:BoundField>
                 <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome"></asp:BoundField>
                 <asp:BoundField DataField="Telefone" HeaderText="Telefone" SortExpression="Telefone"></asp:BoundField>
-            </Columns>
+                </Columns>
         </asp:GridView>
-        <asp:SqlDataSource runat="server" ID="dsListarContatos" ConnectionString="<%$ ConnectionStrings:agendaConexao %>" SelectCommand="SELECT * FROM [Contato] ORDER BY [Nome]"></asp:SqlDataSource>
+        <asp:SqlDataSource runat="server" ID="dsListarContatos" ConnectionString="<%$ ConnectionStrings:agendaConexao %>" SelectCommand="SELECT * FROM [Contato]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [Contato] WHERE [Id] = @original_Id AND (([Nome] = @original_Nome) OR ([Nome] IS NULL AND @original_Nome IS NULL)) AND (([Telefone] = @original_Telefone) OR ([Telefone] IS NULL AND @original_Telefone IS NULL))" InsertCommand="INSERT INTO [Contato] ([Nome], [Telefone]) VALUES (@Nome, @Telefone)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [Contato] SET [Nome] = @Nome, [Telefone] = @Telefone WHERE [Id] = @original_Id AND (([Nome] = @original_Nome) OR ([Nome] IS NULL AND @original_Nome IS NULL)) AND (([Telefone] = @original_Telefone) OR ([Telefone] IS NULL AND @original_Telefone IS NULL))" OnDeleted="dsListarContatos_Deleted" OnUpdated="dsListarContatos_Updated">
+            <DeleteParameters>
+                <asp:Parameter Name="original_Id" Type="Int32"></asp:Parameter>
+                <asp:Parameter Name="original_Nome" Type="String"></asp:Parameter>
+                <asp:Parameter Name="original_Telefone" Type="String"></asp:Parameter>
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="Nome" Type="String"></asp:Parameter>
+                <asp:Parameter Name="Telefone" Type="String"></asp:Parameter>
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="Nome" Type="String"></asp:Parameter>
+                <asp:Parameter Name="Telefone" Type="String"></asp:Parameter>
+                <asp:Parameter Name="original_Id" Type="Int32"></asp:Parameter>
+                <asp:Parameter Name="original_Nome" Type="String"></asp:Parameter>
+                <asp:Parameter Name="original_Telefone" Type="String"></asp:Parameter>
+            </UpdateParameters>
+        </asp:SqlDataSource>
     </form>
 </body>
 </html>
