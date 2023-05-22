@@ -42,4 +42,12 @@
         System.Web.HttpContext.Current.Session("mensagem") = msg
         Response.Redirect("index.aspx")
     End Sub
+
+    Protected Sub lbtBuscar_Click(sender As Object, e As EventArgs)
+        Dim contato, sql As String
+        contato = txtBuscar.Text
+        sql = "select * from contato where nome like '%" + contato + "%'"
+        dsListarContatos.SelectCommand = sql
+        GridView1.DataBind()
+    End Sub
 End Class
