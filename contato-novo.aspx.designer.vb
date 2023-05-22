@@ -59,6 +59,15 @@ Partial Public Class contato_novo
     Protected WithEvents txtTelefone As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Controle RegularExpressionValidator1.
+    '''</summary>
+    '''<remarks>
+    '''Campo gerado automaticamente.
+    '''Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Controle btnCadastrar.
     '''</summary>
     '''<remarks>

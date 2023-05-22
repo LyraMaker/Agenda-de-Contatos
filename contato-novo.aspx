@@ -24,6 +24,7 @@
         <div class="control">
             <asp:TextBox ID="txtTelefone" runat="server" CssClass="input"></asp:TextBox>
         </div>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="- O telefone deve ter essa aparência (xx) x xxxx-xxxx !" ControlToValidate="txtTelefone" ValidationExpression="^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$"></asp:RegularExpressionValidator>
     </div>
     
     <asp:Button ID="btnCadastrar" runat="server" CssClass="button is-primary" Text="Cadastrar contato" OnClick="btnCadastrar_Click"  />
